@@ -9,8 +9,8 @@ public class GestionDePasajes {
     
     
     public void mostrarViajesRealizados() {
-        for (VehiculoTransporte v : transportes)
-            System.out.println("Vehiculo en viaje: " + v.toString());
+        for (VehiculoTransporte vehiculo : transportes)
+            System.out.println("Vehiculo en viaje: " + vehiculo.toString());
             
     }
     
@@ -23,4 +23,7 @@ public class GestionDePasajes {
             System.out.println("No se puedo agregar el viaje");
         }
     }
+    
+    
+    
 }

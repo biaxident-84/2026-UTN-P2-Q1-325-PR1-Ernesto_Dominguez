@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
    
     public static void main(String[] args) {
+        GestionDePasajes gestion = new GestionDePasajes();
         Scanner teclado = new Scanner(System.in);
         
         int opcion;
@@ -20,17 +21,51 @@ public class Main {
             opcion = teclado.nextInt();
             switch (opcion) {
                 case 1: {
-                    System.out.println("Ingrese su nombre: ");
-                    String nombre = teclado.next();
-                    System.out.println("Ingrese el tipo de Vehiculo de transporte: ");
-                    String vehiculo = teclado.next();
-                    System.out.println("Ingrese el tipo de pasaje: (C) COMUN |(J) JUBILADO |(E) ESTUDIANTE: ");
-                    String tipo = teclado.next();
+                    seleccionarTipoVehiculo();
+                    System.out.println("Seleccione una opcion");
+                    while (!teclado.hasNextInt()){teclado.next();}
+                    int tipoVehiculo = teclado.nextInt();
+                    
+                    switch(tipoVehiculo) {
+                        case 1: {
+                            System.out.println("Marca: ");
+                            String marca = teclado.next();
+                            System.out.println("Año:");
+                            int anio = teclado.nextInt();
+                            System.out.println("Ingrese la empresa: ");
+                            String empresa = teclado.next();
+                            System.out.println("Ingrese la capacidad: ");
+                            int capacidad = teclado.nextInt();
+                            System.out.println("Ingrese la patente del vehiculo: ");
+                            String patente = teclado.next();
+                    
+                            Colectivo colectivo = new Colectivo(marca, anio, empresa, capacidad, patente);
+                            gestion.agregarViaje(colectivo);
+                            break;
+                        }
+                        case 2: {
+                            System.out.println("Tipo de servicio: ");
+                            String servicio = teclado.next();
+                            System.out.println("Patente: ");
+                            String patente = teclado.next();
+                            System.out.println("Capacidad: ");
+                            int capacidad = teclado.nextInt();
+                            System.out.println("Empresa: ");
+                            String empresa = teclado.next();
+                            
+                            Tren tren = new Tren(servicio, patente, capacidad, empresa );
+                            gestion.agregarViaje(tren);
+                        }
+                        
+                    }
+                    
+                    
+                    
                 }
                     
                     break;
                 case 2:
-                    
+                    gestion.mostrarViajesRealizados();
                     break;
                 case 3:
                     
@@ -52,7 +87,12 @@ public class Main {
         System.out.println("---------------------------------");
     }
     
-      
+   public static void seleccionarTipoVehiculo () {
+       System.out.println("Seleccione el tipo de vehiculo");
+       System.out.println("1. Colectivo.");
+       System.out.println("2. Tren.");
+       System.out.println("3. Subte.");
+   }
         
         
         
