@@ -55,6 +55,21 @@ public class Main {
                             
                             Tren tren = new Tren(servicio, patente, capacidad, empresa );
                             gestion.agregarViaje(tren);
+                            break;
+                        }
+                        case 3: {
+                            System.out.println("Linea: ");
+                            String linea = teclado.next();
+                            System.out.println("Patente: ");
+                            String patente = teclado.next();
+                            System.out.println("Capacidad: ");
+                            int capacidad = teclado.nextInt();
+                            System.out.println("Empresa: ");
+                            String empresa = teclado.next();
+                            
+                            Subte subte = new Subte(linea, patente, capacidad, empresa);
+                            gestion.agregarViaje(subte);
+                            break;
                         }
                         
                     }
